@@ -9,10 +9,11 @@
 <div class="container">
     [#include '/_common/header.ftlh']
 
+    [#list lekce]
     <table class="table">
         <thead>
         <tr>
-            <th scope="col"></th>
+            <th scope="col">#</th>
             <th scope="col">Název lekce</th>
             <th scope="col">Datum</th>
             <th scope="col">Čas</th>
@@ -20,15 +21,22 @@
         </tr>
         </thead>
         <tbody>
+        [#items as lekce]
         <tr>
-            <td>1.</td>
-            <td>Lekce 1</td>
-            <td>19. září 2022</td>
-            <td>18:00–20:30</td>
-            <td>V mechu</td>
+            <td>${lekce?counter}</td>
+            <td>${lekce.nazev}</td>
+            <td>${lekce.datum}</td>
+            <td>${lekce.cas}</td>
+            <td>${lekce.misto}</td>
         </tr>
+        [/#items]
         </tbody>
     </table>
+    [#else]
+    <div>
+        <em>Není plánována žádná výuka.</em>
+    </div>
+    [/#list]
 </div>
 </body>
 </html>
